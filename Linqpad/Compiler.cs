@@ -69,6 +69,24 @@ namespace CodingArchitect.Utilities.Linqpad
             return query;
         }
 
+        public static void CopyReferencesToAppDirectory(string queryDirectory, string queryFilePath, string appDirectory)
+        {
+            var query = GetQuery(queryDirectory, File.ReadLines(queryFilePath));
+            var otherReferences = query.OtherReferences.Where(p => p.Contains("LINQPad"));
+            foreach (var otherReference in otherReferences)
+            {
+                var fileInfo = new FileInfo(otherReference);
+                var copyLocalPath = Path.Combine(appDirectory, fileInfo.Name);
+                if (!File.Exists(copyLocalPath)) File.Copy(otherReference, copyLocalPath);
+            }
+            foreach (var relativeReference in query.RelativeReferences)
+            {
+                var fileInfo = new FileInfo(relativeReference);
+                var copyLocalPath = Path.Combine(appDirectory, fileInfo.Name);
+                if (!File.Exists(copyLocalPath)) File.Copy(relativeReference, copyLocalPath);
+            }
+        }
+
         public static IEnumerable<string> GetCode(IEnumerable<IEnumerable<string>> contents, Query query, string ns)
         {
             return contents.Select(c => GetCode(c, query, ns));

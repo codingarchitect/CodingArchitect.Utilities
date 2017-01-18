@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppDomain\ConsoleCatcherBase.cs" />
+    <Compile Include="AppDomain\Launcher.cs" />
     <Compile Include="IISAdmin\Util.cs" />
     <Compile Include="Linqpad\Util.cs" />
     <Compile Include="Linqpad\CodeType.cs" />

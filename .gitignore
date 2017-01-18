@@ -8,3 +8,9 @@
 /obj
 /packages/Microsoft.Web.Administration.7.0.0.0
 /CodingArchitect.Utilities.1.0.0.nupkg
+/.vs
+/.vs
+/.vs/CodingArchitect.Utilities/v15/.suo
+/.vs/slnx.sqlite-journal
+*.sqlite-journal
+/.vs/slnx.sqlite
